@@ -37,10 +37,10 @@ namespace obe::Animation
         return m_animationDelay;
     }
 
-    AnimationGroup* Animation::getAnimationGroup(const std::string& groupName)
+    AnimationGroup& Animation::getAnimationGroup(const std::string& groupName)
     {
         if (m_animationGroupMap.find(groupName) != m_animationGroupMap.end())
-            return m_animationGroupMap[groupName].get();
+            return *m_animationGroupMap[groupName];
         throw aube::ErrorHandler::Raise(
             "ObEngine.Animation.Animation.AnimationGroupNotFound",
             {{"animation", m_animationName}, {"group", groupName}});

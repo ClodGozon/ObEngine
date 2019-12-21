@@ -48,6 +48,7 @@ namespace obe::Bindings::AnimationBindings
                              &Animation::Animation::loadAnimation)
                 .addFunction("reset", &Animation::Animation::reset)
                 .addFunction("update", &Animation::Animation::update));
+        
     }
 
     void LoadAnimationGroup(kaguya::State* lua)
@@ -95,7 +96,7 @@ namespace obe::Bindings::AnimationBindings
                 .addFunction("clear", &Animation::Animator::clear)
                 .addFunction("getAllAnimationName",
                              &Animation::Animator::getAllAnimationName)
-                .addFunction("getAnimation", &Animation::Animator::getAnimation)
+                //.addFunction("getAnimation", &Animation::Animator::getAnimation)
                 .addFunction("getKey", &Animation::Animator::getKey)
                 .addFunction("getSpriteOffset",
                              &Animation::Animator::getSpriteOffset)

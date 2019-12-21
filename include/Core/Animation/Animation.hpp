@@ -119,7 +119,7 @@ namespace obe::Animation
          * AnimationGroup is not found. \param groupName The name of the
          * AnimationGroup to return \return A pointer to the AnimationGroup
          */
-        AnimationGroup* getAnimationGroup(const std::string& groupName);
+        AnimationGroup& getAnimationGroup(const std::string& groupName);
         /**
          * \brief Get the Animation name
          * \return A std::string containing the name of the Animation

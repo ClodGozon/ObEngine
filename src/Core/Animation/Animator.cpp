@@ -37,15 +37,24 @@ namespace obe::Animation
         m_animatorPath = System::Path("");
     }
 
-    Animation* Animator::getAnimation(const std::string& animationName) const
+    Animation& Animator::getAnimation(const std::string& animationName) const
     {
         if (m_animationSet.find(animationName) != m_animationSet.end())
-            return m_animationSet.at(animationName).get();
+            return *m_animationSet.at(animationName);
         throw aube::ErrorHandler::Raise(
             "ObEngine.Animation.Animator.AnimationNotFound",
             {{"function", "getAnimation"},
              {"animation", animationName},
              {"%animator", m_animatorPath.toString()}});
+    }
+    Animation& Animator::test(const std::string& animationName)
+    {
+        if (m_animationSet.find(animationName) != m_animationSet.end())
+            return *m_animationSet.at(animationName);
+        throw aube::ErrorHandler::Raise(
+            "ObEngine.Animation.Animator.AnimationNotFound",
+            { { "function", "getAnimation" }, { "animation", animationName },
+                { "%animator", m_animatorPath.toString() } });
     }
 
     std::vector<std::string> Animator::getAllAnimationName() const
@@ -229,7 +238,7 @@ namespace obe::Animation
     const sf::Texture& Animator::getTextureAtKey(const std::string& key,
                                                  int index) const
     {
-        return this->getAnimation(key)->getTextureAtIndex(index);
+        return this->getAnimation(key).getTextureAtIndex(index);
     }
 
     Transform::UnitVector Animator::getSpriteOffset() const

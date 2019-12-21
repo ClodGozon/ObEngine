@@ -96,7 +96,8 @@ namespace obe::Animation
          *         Throws a ObEngine.Animation.Animator.AnimationNotFound if the
          * Animation is not found
          */
-        Animation* getAnimation(const std::string& animationName) const;
+        Animation& getAnimation(const std::string& animationName) const;
+        Animation& test(const std::string& animationName);
         /**
          * \brief Get the name of the currently played Animation
          * \return A std::string containing the name of the currently played
